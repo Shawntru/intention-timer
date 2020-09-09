@@ -7,3 +7,37 @@ Study: #B3FD78
 Meditate: #C278FD
 Exercise: #FD8078
 Error: #EFB7EC */
+body {
+  background-color: #2B2733;
+  margin: 0px;
+}
+
+* {
+  font-family: Montserrat;
+  color: white;
+}
+
+.header {
+  background-color: #46424D;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.study-button, .meditate-button, .exercise-button {
+  background: transparent;
+  width: 200px;
+  padding: 15px 0px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
