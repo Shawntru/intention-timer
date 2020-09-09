@@ -1,0 +1,103 @@
+/* Main background: #2B2733
+Text on main background: #CBC9CF
+Header, cards: #46424D
+Card shadow: #26222D
+Text on header and cards: #FFF
+Study: #B3FD78
+Meditate: #C278FD
+Exercise: #FD8078
+Error: #EFB7EC */
+body {
+  background-color: #2B2733;
+  margin: 0px;
+}
+
+* {
+  font-family: Montserrat;
+  color: white;
+}
+
+
+.header {
+  background-color: #46424D;
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.main-content {
+  display: flex;
+}
+
+h2 {
+  margin-left: 30px;
+}
+
+.new-activity {
+  width: 66%;
+}
+
+.user-setup-form {
+  background-color: #46424D;
+  margin: 30px;
+  padding: 40px;
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.study-button, .meditate-button, .exercise-button {
+  background: transparent;
+  width: 200px;
+  padding: 15px 0px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+}
+
+.user-goal {
+  margin-bottom: 30px;
+}
+
+.user-timer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 30px;
+  /* flex-grow: 1; */
+}
+
+.start-activity {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: white;
+  background: #46424D;
+  width: 100%;
+}
+
+.input-line {
+  width: 220px;
+}
+
+.start-activity-button {
+  color: #2B2733;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
+.past-activity {
+  border-left: 3px solid #46424D;
+}
