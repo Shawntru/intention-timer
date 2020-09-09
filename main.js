@@ -1,7 +1,10 @@
+var activities = [];
+
 var studyButton = document.querySelector('.study-button');
 var meditateButton = document.querySelector('.meditate-button');
 var exerciseButton = document.querySelector('.exercise-button');
 var startActivityButton = document.querySelector('.start-activity-button');
+var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
 
@@ -33,7 +36,13 @@ function checkNumber() {
 }
 
 function startActivity() {
-  
+  var newActivity = new Activity(
+    'category',
+    descriptionInput.value,
+    minuteInput.value,
+    secondInput.value
+  );
+  activities.push(newActivity);
 }
 
 
