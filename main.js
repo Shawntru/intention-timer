@@ -5,11 +5,9 @@ var startActivityButton = document.querySelector('.start-activity-button');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
 
-
-
 // var categoryButton = document.querySelectorAll('.category-button')
 
-startActivityButton.addEventListener('click', checkNumber);
+startActivityButton.addEventListener('click', startActivity);
 
 studyButton.addEventListener('click', function () {
   studyButton.classList.toggle('study-highlighted');
@@ -23,12 +21,19 @@ exerciseButton.addEventListener('click', function () {
   exerciseButton.classList.toggle('exercise-highlighted');
 });
 
+minuteInput.addEventListener('keyup', checkNumber);
+secondInput.addEventListener('keyup', checkNumber);
+
 function checkNumber() {
   var minutes = parseInt(minuteInput.value);
   var seconds = parseInt(secondInput.value);
-  if (isNaN(minutes) || isNaN(seconds)) {
-    console.log('NOOOOOOOO');
+  if (Number.isInteger(minutes) && Number.isInteger(seconds)) {
+    startActivityButton.removeAttribute('disabled');
   }
+}
+
+function startActivity() {
+  
 }
 
 
