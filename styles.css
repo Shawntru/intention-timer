@@ -56,9 +56,19 @@ h2 {
   border-radius: 5px;
 }
 
-.highlighted {
-  border-color: purple;
-  color: purple;
+.study-highlighted {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+
+.meditate-highlighted {
+  border-color: #C278FD;
+  color: #C278FD;
+}
+
+.exercise-highlighted {
+  border-color: #FD8078;
+  color: #FD8078;
 }
 
 .icon {
