@@ -71,12 +71,25 @@ h2 {
   justify-content: space-between;
   width: 80%;
   margin-bottom: 30px;
+  /* flex-grow: 1; */
 }
 
 .start-activity {
   display: flex;
   justify-content: flex-end;
   margin-bottom: 30px;
+}
+
+.input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: white;
+  background: #46424D;
+  width: 100%;
+}
+
+.input-line {
+  width: 220px;
 }
 
 .start-activity-button {
