@@ -31,6 +31,11 @@ h2 {
   padding: 15px 0px;
 }
 
+.error-message {
+  margin: 10px;
+  color: #EFB7EC;
+}
+
 .main-content {
   display: flex;
 }
@@ -63,6 +68,11 @@ h2 {
 .icon {
   width: 32px;
   height: 32px;
+}
+
+.danger-icon {
+  width: 25px;
+  margin-right: 5px;
 }
 
 .user-goal {
@@ -118,7 +128,6 @@ h2 {
   position: relative;
   text-align: center;
   top: 50%;
-  margin-top: -2.5em;
   @media (max-width: $small) {margin-top: -1.5em;}
 }
 

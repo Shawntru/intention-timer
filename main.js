@@ -9,6 +9,7 @@ userTimerSection.addEventListener('keyup', checkNumber);
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
+  checkDescription();
   createActivity(checkedButton);
 }
 
@@ -17,6 +18,12 @@ function checkNumber() {
   var seconds = parseInt(secondInput.value);
   if (Number.isInteger(minutes) && Number.isInteger(seconds)) {
     startActivityButton.removeAttribute('disabled');
+  }
+}
+
+function checkDescription() {
+  if (descriptionInput.value === '') {
+    document.querySelector('.error-message').classList.toggle('hidden');
   }
 }
 
