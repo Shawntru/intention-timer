@@ -3,12 +3,12 @@ var startActivityButton = document.querySelector('.start-activity-button');
 var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
+var userTimerSection = document.querySelector('.user-timer');
 
-minuteInput.addEventListener('keyup', checkNumber);
-secondInput.addEventListener('keyup', checkNumber);
+userTimerSection.addEventListener('keyup', checkNumber);
 
 function startActivity() {
-  var checkedButton = document.querySelector('input[name="accept-offers"]:checked').value;
+  var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
   createActivity(checkedButton);
 }
 

@@ -21,6 +21,10 @@ h2 {
   margin-left: 30px;
 }
 
+.hidden {
+  display: none;
+}
+
 .header {
   background-color: #46424D;
   text-align: center;
@@ -54,21 +58,6 @@ h2 {
   border-style: solid;
   border-color: white;
   border-radius: 5px;
-}
-
-.study-highlighted {
-  border-color: #B3FD78;
-  color: #B3FD78;
-}
-
-.meditate-highlighted {
-  border-color: #C278FD;
-  color: #C278FD;
-}
-
-.exercise-highlighted {
-  border-color: #FD8078;
-  color: #FD8078;
 }
 
 .icon {
@@ -134,43 +123,40 @@ h2 {
 }
 
 .button-label {
-  width: 200px;
+  width: 150px;
   border-style: solid;
   border-color: white;
   display: inline-block;
-  padding: 15px 0px;
+  padding: 5px 0px;
   margin: 0.5em;
   border-radius: 5px;
   background: transparent;
+  user-select: none;
 }
 
-#yes-button:checked + .button-label {
-  background: green;
-  color: green;
+#study-button:checked + .button-label {
+  border-color: #B3FD78;
+  color: #B3FD78;
   &:hover {
     background: darken($green, 5%);
     color: darken($light, 5%);
   }
 }
 
-#no-button:checked + .button-label {
-  background: red;
-  color: red;
+#meditate-button:checked + .button-label {
+  border-color: #C278FD;
+  color: #C278FD;
   &:hover {
     background: darken($red, 5%);
     color: darken($light, 5%);
   }
 }
 
-#maybe-button:checked + .button-label {
-  background: blue;
-  color: blue;
+#exercise-button:checked + .button-label {
+  border-color: #FD8078;
+  color: #FD8078;
   &:hover {
     background: darken($blue, 5%);
     color: darken($light, 5%);
   }
-}
-
-.hidden {
-  display: none;
 }
