@@ -12,30 +12,44 @@
       <div class="new-activity">
         <h2>New Activity</h2>
         <div class="user-setup-form">
+          <h3>Select a category:</h3>
           <div class="categories">
-            <h3>Select a category:</h3>
             <div class="category-buttons">
-              <button class="study-button"><img class="icon" src="./assets/study.svg"><br>Study</button>
-              <button class="meditate-button"><img class="icon" src="./assets/meditate.svg"><br>Meditate</button>
-              <button class="exercise-button"><img class="icon" src="./assets/exercise.svg"><br>Exercise</button>
+              <div class="container">
+                <div class="button-wrap">
+                  <input class="hidden radio-label" value="study" id="study-button" type="radio" name="selectors"/>
+                  <label class="button-label" for="study-button"><img class="icon" src="./assets/study.svg">
+                    <h1>Study</h1>
+                  </label>
+                  <input class="hidden radio-label" value="meditate" id="meditate-button" type="radio" name="selectors"/>
+                  <label class="button-label" for="meditate-button"><img class="icon" src="./assets/meditate.svg">
+                    <h1>Meditate</h1>
+                  </label>
+                  <input class="hidden radio-label" value="exercise" id="exercise-button" type="radio" name="selectors"/>
+                  <label class="button-label" for="exercise-button"><img class="icon" src="./assets/exercise.svg">
+                    <h1>Exercise</h1>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
             <div class="user-goal">
               <h3>What would you like to accomplish during this time?</h3>
-              <input class="input" type="text">
+              <input class="input description-input" type="text">
+              <h3 class="error-message hidden"><img class="danger-icon" src="./assets/warning.svg">A description is required.</h3>
             </div>
             <div class="user-timer">
               <div>
                 <h3>Minutes</h3>
-                <input class="input input-line" type="text">
+                <input class="input input-line minutes" type="text">
               </div>
               <div>
                 <h3>Seconds</h3>
-                <input class="input input-line" type="text">
+                <input class="input input-line seconds" type="text">
               </div>
             </div>
             <div class="start-activity">
-              <button class="start-activity-button">START ACTIVITY</button>
+              <button class="start-activity-button" onclick="startActivity()" disabled>START ACTIVITY</button>
             </div>
         </div>
       </div>
