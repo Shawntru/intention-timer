@@ -8,7 +8,7 @@ minuteInput.addEventListener('keyup', checkNumber);
 secondInput.addEventListener('keyup', checkNumber);
 
 function startActivity() {
-  var checkedButton = document.querySelector('input[name="cat-group"]:checked').value;
+  var checkedButton = document.querySelector('input[name="accept-offers"]:checked').value;
   createActivity(checkedButton);
 }
 

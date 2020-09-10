@@ -116,33 +116,61 @@ h2 {
   border-left: 3px solid #46424D;
 }
 
-.btn{
-    border: 3px solid #1a1a1a;
-    display: inline-block;
-    padding: 10px;
-    position: relative;
-    text-align: center;
-    transition: background 600ms ease, color 600ms ease;
+
+/* ------------------ */
+
+.container {
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto;
 }
 
-input[type="radio"]:checked {
-  border-color: #B3FD78;
-  color: #B3FD78;
+.button-wrap {
+  position: relative;
+  text-align: center;
+  top: 50%;
+  margin-top: -2.5em;
+  @media (max-width: $small) {margin-top: -1.5em;}
 }
 
-input[type="radio"] {
-    display: none;
-    & + label{
-        cursor: pointer;
-        min-width: 60px;
-        &:hover{
-            background: none;
-            color: #1a1a1a;
-        }
-        &:after{
-            background: #1a1a1a;
-            content: "";
-            height: 100%;
-            position: absolute;
-            top: 0;
-            transition: left 200ms cubic-
+.button-label {
+  width: 200px;
+  border-style: solid;
+  border-color: white;
+  display: inline-block;
+  padding: 15px 0px;
+  margin: 0.5em;
+  border-radius: 5px;
+  background: transparent;
+}
+
+#yes-button:checked + .button-label {
+  background: green;
+  color: green;
+  &:hover {
+    background: darken($green, 5%);
+    color: darken($light, 5%);
+  }
+}
+
+#no-button:checked + .button-label {
+  background: red;
+  color: red;
+  &:hover {
+    background: darken($red, 5%);
+    color: darken($light, 5%);
+  }
+}
+
+#maybe-button:checked + .button-label {
+  background: blue;
+  color: blue;
+  &:hover {
+    background: darken($blue, 5%);
+    color: darken($light, 5%);
+  }
+}
+
+.hidden {
+  display: none;
+}
