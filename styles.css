@@ -17,6 +17,10 @@ body {
   margin: 0px;
 }
 
+h1 {
+  margin: 10px;
+}
+
 h2 {
   margin-left: 30px;
 }
@@ -54,20 +58,23 @@ h2 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
+  position: relative;
+  text-align: center;
 }
-
-.category-button {
+/* DeleteMe later */
+/* .category-button {
   background: transparent;
   width: 200px;
   padding: 15px 0px;
   border-style: solid;
   border-color: white;
   border-radius: 5px;
-}
+} */
 
 .icon {
   width: 32px;
   height: 32px;
+  padding-top: 5px;
 }
 
 .danger-icon {
@@ -118,19 +125,6 @@ h2 {
 
 /* ------------------ */
 
-.container {
-  height: 100%;
-  min-height: 100%;
-  margin: 0 auto;
-}
-
-.button-wrap {
-  position: relative;
-  text-align: center;
-  top: 50%;
-  @media (max-width: $small) {margin-top: -1.5em;}
-}
-
 .button-label {
   width: 150px;
   border-style: solid;
@@ -141,31 +135,22 @@ h2 {
   border-radius: 5px;
   background: transparent;
   user-select: none;
+  color: white;
+  font-size: 25px;
 }
 
 #study-button:checked + .button-label {
   border-color: #B3FD78;
   color: #B3FD78;
-  &:hover {
-    background: darken($green, 5%);
-    color: darken($light, 5%);
-  }
+  background-image: url(assets/warning.svg)
 }
 
 #meditate-button:checked + .button-label {
   border-color: #C278FD;
   color: #C278FD;
-  &:hover {
-    background: darken($red, 5%);
-    color: darken($light, 5%);
-  }
 }
 
 #exercise-button:checked + .button-label {
   border-color: #FD8078;
   color: #FD8078;
-  &:hover {
-    background: darken($blue, 5%);
-    color: darken($light, 5%);
-  }
 }

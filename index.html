@@ -13,26 +13,20 @@
         <h2>New Activity</h2>
         <div class="user-setup-form">
           <h3>Select a category:</h3>
-          <div class="categories">
             <div class="category-buttons">
-              <div class="container">
-                <div class="button-wrap">
-                  <input class="hidden radio-label" value="study" id="study-button" type="radio" name="selectors"/>
-                  <label class="button-label" for="study-button"><img class="icon" src="./assets/study.svg">
-                    <h1>Study</h1>
+                  <input class="hidden radio-label" value="study" id="study-button" type="radio" name="selectors" onclick="highlightIcon()"/>
+                  <label class="button-label" for="study-button"><img class="icon" id="study-icon" src="./assets/study.svg">
+                    <br>Study
                   </label>
-                  <input class="hidden radio-label" value="meditate" id="meditate-button" type="radio" name="selectors"/>
-                  <label class="button-label" for="meditate-button"><img class="icon" src="./assets/meditate.svg">
-                    <h1>Meditate</h1>
+                  <input class="hidden radio-label" value="meditate" id="meditate-button" type="radio" name="selectors" onclick="highlightIcon()"/>
+                  <label class="button-label" for="meditate-button"><img class="icon" id="meditate-icon" src="./assets/meditate.svg">
+                    <br>Meditate
                   </label>
-                  <input class="hidden radio-label" value="exercise" id="exercise-button" type="radio" name="selectors"/>
-                  <label class="button-label" for="exercise-button"><img class="icon" src="./assets/exercise.svg">
-                    <h1>Exercise</h1>
+                  <input class="hidden radio-label" value="exercise" id="exercise-button" type="radio" name="selectors" onclick="highlightIcon()"/>
+                  <label class="button-label" for="exercise-button"><img class="icon" id="exercise-icon" src="./assets/exercise.svg">
+                    <br>Exercise
                   </label>
-                </div>
-              </div>
             </div>
-          </div>
             <div class="user-goal">
               <h3>What would you like to accomplish during this time?</h3>
               <input class="input description-input" type="text">
