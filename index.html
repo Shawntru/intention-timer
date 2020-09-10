@@ -15,9 +15,9 @@
           <div class="categories">
             <h3>Select a category:</h3>
             <div class="category-buttons">
-              <button class="study-button category-button"><img class="icon" src="./assets/study.svg"><br>Study</button>
-              <button class="meditate-button category-button"><img class="icon" src="./assets/meditate.svg"><br>Meditate</button>
-              <button class="exercise-button category-button"><img class="icon" src="./assets/exercise.svg"><br>Exercise</button>
+              <input type="radio" name="cat-group" value="study" class="study-button category-button"><label class="btn"><img class="icon" src="./assets/study.svg">Study</label>
+              <input type="radio" name="cat-group" value="meditate" class="meditate-button category-button"><img class="icon" src="./assets/meditate.svg"><br>Meditate</input>
+              <input type="radio" name="cat-group" value="exercise" class="exercise-button category-button"><img class="icon" src="./assets/exercise.svg"><br>Exercise</input>
             </div>
           </div>
             <div class="user-goal">
@@ -35,7 +35,7 @@
               </div>
             </div>
             <div class="start-activity">
-              <button class="start-activity-button" disabled>START ACTIVITY</button>
+              <button class="start-activity-button" onclick="startActivity()" disabled>START ACTIVITY</button>
             </div>
         </div>
       </div>

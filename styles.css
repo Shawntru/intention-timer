@@ -47,7 +47,7 @@ h2 {
   margin-bottom: 30px;
 }
 
-.study-button, .meditate-button, .exercise-button {
+.category-button {
   background: transparent;
   width: 200px;
   padding: 15px 0px;
@@ -115,3 +115,34 @@ h2 {
 .past-activity {
   border-left: 3px solid #46424D;
 }
+
+.btn{
+    border: 3px solid #1a1a1a;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    transition: background 600ms ease, color 600ms ease;
+}
+
+input[type="radio"]:checked {
+  border-color: #B3FD78;
+  color: #B3FD78;
+}
+
+input[type="radio"] {
+    display: none;
+    & + label{
+        cursor: pointer;
+        min-width: 60px;
+        &:hover{
+            background: none;
+            color: #1a1a1a;
+        }
+        &:after{
+            background: #1a1a1a;
+            content: "";
+            height: 100%;
+            position: absolute;
+            top: 0;
+            transition: left 200ms cubic-
