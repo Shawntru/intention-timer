@@ -1,4 +1,5 @@
-var activities = [];
+var currentActivity;
+var pastActivities = [];
 var formDisplay = document.querySelector('.form-display');
 var timerDisplay = document.querySelector('.timer-display');
 var startActivityButton = document.querySelector('.start-activity-button');
@@ -8,6 +9,7 @@ var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
 var userTimeSection = document.querySelector('.user-time');
 var selectButtons = document.querySelector('.category-buttons');
+var userDescriptionTimer = document.querySelector('.user-description-timer');
 
 userTimeSection.addEventListener('keyup', checkNumber);
 
@@ -16,6 +18,7 @@ function startActivity() {
   errorHandling();
   startTimerButton.classList.add(`${checkedButton}-ring`);
   createActivity(checkedButton);
+  displayUserTimer();
 }
 
 function checkNumber() {
@@ -48,16 +51,21 @@ function errorHandling() {
 }
 
 function createActivity(category) {
-  var newActivity = new Activity(
+  currentActivity = new Activity(
     category,
     descriptionInput.value,
     minuteInput.value,
     secondInput.value
   );
-  activities.push(newActivity);
+  pastActivities.push(currentActivity);
+  // Need to move later to timer complete function
 }
 
 function toggleDisplay() {
   formDisplay.classList.toggle('hidden');
   timerDisplay.classList.toggle('hidden');
+}
+
+function displayUserTimer() {
+  userDescriptionTimer.innerText = currentActivity.description;
 }
