@@ -1,4 +1,6 @@
 var activities = [];
+var formDisplay = document.querySelector('.form-display');
+var timerDisplay = document.querySelector('.timer-display');
 var startActivityButton = document.querySelector('.start-activity-button');
 var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
@@ -10,7 +12,7 @@ userTimeSection.addEventListener('keyup', checkNumber);
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
-  checkDescription();
+  errorHandling();
   createActivity(checkedButton);
 }
 
@@ -34,9 +36,12 @@ function clearHighlight() {
   }
 }
 
-function checkDescription() {
+function errorHandling() {
   if (descriptionInput.value === '') {
     document.querySelector('.error-message').classList.toggle('hidden');
+    descriptionInput.classList.add('input-error');
+  } else {
+    toggleDisplay();
   }
 }
 
@@ -48,4 +53,9 @@ function createActivity(category) {
     secondInput.value
   );
   activities.push(newActivity);
+}
+
+function toggleDisplay() {
+  formDisplay.classList.toggle('hidden');
+  timerDisplay.classList.toggle('hidden');
 }

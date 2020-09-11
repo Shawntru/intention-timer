@@ -49,7 +49,7 @@ h2 {
   width: 66%;
 }
 
-.user-setup-form {
+.user-display > * {
   background-color: #46424D;
   margin: 30px;
   padding: 40px;
@@ -97,6 +97,10 @@ h2 {
   border-color: white;
   background: #46424D;
   width: 100%;
+}
+
+.input-error {
+  border-color: #EFB7EC;
 }
 
 .input-line {
