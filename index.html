@@ -14,15 +14,15 @@
         <div class="user-setup-form">
           <h3>Select a category:</h3>
             <div class="category-buttons">
-                  <input class="hidden radio-label" value="study" id="study-button" type="radio" name="selectors" onclick="highlightIcon()"/>
+                  <input class="hidden radio-label" value="study" id="study-button" type="radio" name="selectors" onclick="highlightIcon('study')"/>
                   <label class="button-label" for="study-button"><img class="icon" id="study-icon" src="./assets/study.svg">
                     <br>Study
                   </label>
-                  <input class="hidden radio-label" value="meditate" id="meditate-button" type="radio" name="selectors" onclick="highlightIcon()"/>
+                  <input class="hidden radio-label" value="meditate" id="meditate-button" type="radio" name="selectors" onclick="highlightIcon('meditate')"/>
                   <label class="button-label" for="meditate-button"><img class="icon" id="meditate-icon" src="./assets/meditate.svg">
                     <br>Meditate
                   </label>
-                  <input class="hidden radio-label" value="exercise" id="exercise-button" type="radio" name="selectors" onclick="highlightIcon()"/>
+                  <input class="hidden radio-label" value="exercise" id="exercise-button" type="radio" name="selectors" onclick="highlightIcon('exercise')"/>
                   <label class="button-label" for="exercise-button"><img class="icon" id="exercise-icon" src="./assets/exercise.svg">
                     <br>Exercise
                   </label>
@@ -32,7 +32,7 @@
               <input class="input description-input" type="text">
               <h3 class="error-message hidden"><img class="danger-icon" src="./assets/warning.svg">A description is required.</h3>
             </div>
-            <div class="user-timer">
+            <div class="user-time">
               <div>
                 <h3>Minutes</h3>
                 <input class="input input-line minutes" type="text">

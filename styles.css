@@ -7,6 +7,7 @@ Study: #B3FD78
 Meditate: #C278FD
 Exercise: #FD8078
 Error: #EFB7EC */
+
 * {
   font-family: Montserrat;
   color: white;
@@ -61,15 +62,6 @@ h2 {
   position: relative;
   text-align: center;
 }
-/* DeleteMe later */
-/* .category-button {
-  background: transparent;
-  width: 200px;
-  padding: 15px 0px;
-  border-style: solid;
-  border-color: white;
-  border-radius: 5px;
-} */
 
 .icon {
   width: 32px;
@@ -86,12 +78,11 @@ h2 {
   margin-bottom: 30px;
 }
 
-.user-timer {
+.user-time {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin-bottom: 30px;
-  /* flex-grow: 1; */
 }
 
 .start-activity {
@@ -122,9 +113,6 @@ h2 {
   border-left: 3px solid #46424D;
 }
 
-
-/* ------------------ */
-
 .button-label {
   width: 150px;
   border-style: solid;
@@ -142,7 +130,6 @@ h2 {
 #study-button:checked + .button-label {
   border-color: #B3FD78;
   color: #B3FD78;
-  background-image: url(assets/warning.svg)
 }
 
 #meditate-button:checked + .button-label {
