@@ -2,6 +2,7 @@ var activities = [];
 var formDisplay = document.querySelector('.form-display');
 var timerDisplay = document.querySelector('.timer-display');
 var startActivityButton = document.querySelector('.start-activity-button');
+var startTimerButton = document.querySelector('.start-button');
 var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
@@ -13,6 +14,7 @@ userTimeSection.addEventListener('keyup', checkNumber);
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
   errorHandling();
+  startTimerButton.classList.add(`${checkedButton}-ring`);
   createActivity(checkedButton);
 }
 

@@ -27,7 +27,7 @@ h2 {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .header {
@@ -145,6 +145,13 @@ h2 {
   border-color: #FD8078;
   color: #FD8078;
 }
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .start-button {
   background: transparent;
   text-align: center;
@@ -156,4 +163,16 @@ h2 {
   border-style: solid;
   outline: none;
   font-size: 22px;
+}
+
+.study-ring {
+  border-color: #B3FD78;
+}
+
+.meditate-ring {
+  border-color: #C278FD;
+}
+
+.exercise-ring {
+  border-color: #FD8078;
 }
