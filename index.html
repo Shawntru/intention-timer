@@ -12,7 +12,7 @@
       <div class="new-activity">
         <h2>New Activity</h2>
         <div class="user-display">
-          <div class="form-display">
+          <div class="form-display hidden">
             <h3>Select a category:</h3>
               <div class="category-buttons">
                     <input class="hidden radio-label" value="study" id="study-button" type="radio" name="selectors" onclick="highlightIcon('study')"/>
@@ -47,8 +47,9 @@
                 <button class="start-activity-button" onclick="startActivity()" disabled>START ACTIVITY</button>
               </div>
               </div>
-            <div class="timer-display hidden">
+            <div class="timer-display">
               <h2>TIMER</h2>
+              <button class="start-button">START</button>
             </div>
         </div>
       </div>

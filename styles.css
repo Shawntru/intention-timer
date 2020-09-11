@@ -145,3 +145,15 @@ h2 {
   border-color: #FD8078;
   color: #FD8078;
 }
+.start-button {
+  background: transparent;
+  text-align: center;
+  border-radius: 50%;
+  border-color: white;
+  border-width: 3px;
+  width: 230px;
+  height: 230px;
+  border-style: solid;
+  outline: none;
+  font-size: 22px;
+}
