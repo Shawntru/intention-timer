@@ -13,13 +13,14 @@ var userDescriptionTimer = document.querySelector('.user-description-timer');
 var timer = document.querySelector('.timer');
 
 userTimeSection.addEventListener('keyup', checkNumber);
+startTimerButton.addEventListener('click', startTimer);
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
   errorHandling();
   startTimerButton.classList.add(`${checkedButton}-ring`);
   createActivity(checkedButton);
-  displayUserTimer();
+  userDescriptionTimer.innerText = currentActivity.description;
 }
 
 function checkNumber() {
@@ -67,11 +68,20 @@ function toggleDisplay() {
   timerDisplay.classList.toggle('hidden');
 }
 
-function displayUserTimer() {
-  userDescriptionTimer.innerText = currentActivity.description;
-  var time = (parseInt(currentActivity.minutes) * 60) + parseInt(currentActivity.seconds);
-  formatTimer(time);
+function startTimer() {
+  var startTime = (parseInt(currentActivity.minutes) * 60) + parseInt(currentActivity.seconds);
+  countdown(startTime);
 }
+
+function countdown(startTime) {
+  var timeLeft = startTime;
+  setInterval(function() {
+    currentActivity.timePassed += 1;
+    timeLeft = (startTime - currentActivity.timePassed);
+    formatTimer(timeLeft);
+  }, 1000);
+}
+
 
 function formatTimer(time) {
   var minutes = Math.floor(time / 60);
