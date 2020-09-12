@@ -7,6 +7,7 @@ Study: #B3FD78
 Meditate: #C278FD
 Exercise: #FD8078
 Error: #EFB7EC */
+
 * {
   font-family: Montserrat;
   color: white;
@@ -17,12 +18,17 @@ body {
   margin: 0px;
 }
 
+h1 {
+  margin: 10px;
+  font-size: 35px;
+}
+
 h2 {
   margin-left: 30px;
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .header {
@@ -44,7 +50,7 @@ h2 {
   width: 66%;
 }
 
-.user-setup-form {
+.user-display > * {
   background-color: #46424D;
   margin: 30px;
   padding: 40px;
@@ -54,20 +60,14 @@ h2 {
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
-}
-
-.category-button {
-  background: transparent;
-  width: 200px;
-  padding: 15px 0px;
-  border-style: solid;
-  border-color: white;
-  border-radius: 5px;
+  position: relative;
+  text-align: center;
 }
 
 .icon {
   width: 32px;
   height: 32px;
+  padding-top: 5px;
 }
 
 .danger-icon {
@@ -79,12 +79,11 @@ h2 {
   margin-bottom: 30px;
 }
 
-.user-timer {
+.user-time {
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin-bottom: 30px;
-  /* flex-grow: 1; */
 }
 
 .start-activity {
@@ -101,6 +100,10 @@ h2 {
   width: 100%;
 }
 
+.input-error {
+  border-color: #EFB7EC;
+}
+
 .input-line {
   width: 220px;
 }
@@ -115,22 +118,6 @@ h2 {
   border-left: 3px solid #46424D;
 }
 
-
-/* ------------------ */
-
-.container {
-  height: 100%;
-  min-height: 100%;
-  margin: 0 auto;
-}
-
-.button-wrap {
-  position: relative;
-  text-align: center;
-  top: 50%;
-  @media (max-width: $small) {margin-top: -1.5em;}
-}
-
 .button-label {
   width: 150px;
   border-style: solid;
@@ -141,31 +128,52 @@ h2 {
   border-radius: 5px;
   background: transparent;
   user-select: none;
+  color: white;
+  font-size: 25px;
 }
 
 #study-button:checked + .button-label {
   border-color: #B3FD78;
   color: #B3FD78;
-  &:hover {
-    background: darken($green, 5%);
-    color: darken($light, 5%);
-  }
 }
 
 #meditate-button:checked + .button-label {
   border-color: #C278FD;
   color: #C278FD;
-  &:hover {
-    background: darken($red, 5%);
-    color: darken($light, 5%);
-  }
 }
 
 #exercise-button:checked + .button-label {
   border-color: #FD8078;
   color: #FD8078;
-  &:hover {
-    background: darken($blue, 5%);
-    color: darken($light, 5%);
-  }
+}
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-button {
+  background: transparent;
+  text-align: center;
+  border-radius: 50%;
+  border-color: white;
+  border-width: 3px;
+  width: 230px;
+  height: 230px;
+  border-style: solid;
+  outline: none;
+  font-size: 22px;
+}
+
+.study-ring {
+  border-color: #B3FD78;
+}
+
+.meditate-ring {
+  border-color: #C278FD;
+}
+
+.exercise-ring {
+  border-color: #FD8078;
 }

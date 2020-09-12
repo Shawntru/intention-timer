@@ -1,16 +1,25 @@
-var activities = [];
+var currentActivity;
+var pastActivities = [];
+var formDisplay = document.querySelector('.form-display');
+var timerDisplay = document.querySelector('.timer-display');
 var startActivityButton = document.querySelector('.start-activity-button');
+var startTimerButton = document.querySelector('.start-button');
 var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
-var userTimerSection = document.querySelector('.user-timer');
+var userTimeSection = document.querySelector('.user-time');
+var selectButtons = document.querySelector('.category-buttons');
+var userDescriptionTimer = document.querySelector('.user-description-timer');
+var timer = document.querySelector('.timer');
 
-userTimerSection.addEventListener('keyup', checkNumber);
+userTimeSection.addEventListener('keyup', checkNumber);
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
-  checkDescription();
+  errorHandling();
+  startTimerButton.classList.add(`${checkedButton}-ring`);
   createActivity(checkedButton);
+  displayUserTimer();
 }
 
 function checkNumber() {
@@ -21,18 +30,57 @@ function checkNumber() {
   }
 }
 
-function checkDescription() {
+function highlightIcon(button) {
+  clearHighlight();
+  document.getElementById(`${button}-icon`).src = `./assets/${button}-active.svg`;
+}
+
+function clearHighlight() {
+  var buttonClasses = ['study', 'meditate', 'exercise'];
+  for (var i = 0; i < buttonClasses.length; i++) {
+    document.getElementById(`${buttonClasses[i]}-icon`).src = `./assets/${buttonClasses[i]}.svg`;
+  }
+}
+
+function errorHandling() {
   if (descriptionInput.value === '') {
     document.querySelector('.error-message').classList.toggle('hidden');
+    descriptionInput.classList.add('input-error');
+  } else {
+    toggleDisplay();
   }
 }
 
 function createActivity(category) {
-  var newActivity = new Activity(
+  currentActivity = new Activity(
     category,
     descriptionInput.value,
     minuteInput.value,
     secondInput.value
   );
-  activities.push(newActivity);
+  pastActivities.push(currentActivity);
+  // Need to move later to timer complete function
+}
+
+function toggleDisplay() {
+  formDisplay.classList.toggle('hidden');
+  timerDisplay.classList.toggle('hidden');
+}
+
+function displayUserTimer() {
+  userDescriptionTimer.innerText = currentActivity.description;
+  var time = (parseInt(currentActivity.minutes) * 60) + parseInt(currentActivity.seconds);
+  formatTimer(time);
+}
+
+function formatTimer(time) {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  timer.innerHTML = `${minutes}:${seconds}`;
 }
