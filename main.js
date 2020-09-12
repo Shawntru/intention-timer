@@ -10,6 +10,7 @@ var secondInput = document.querySelector('.seconds');
 var userTimeSection = document.querySelector('.user-time');
 var selectButtons = document.querySelector('.category-buttons');
 var userDescriptionTimer = document.querySelector('.user-description-timer');
+var timer = document.querySelector('.timer');
 
 userTimeSection.addEventListener('keyup', checkNumber);
 
@@ -68,4 +69,18 @@ function toggleDisplay() {
 
 function displayUserTimer() {
   userDescriptionTimer.innerText = currentActivity.description;
+  var time = (parseInt(currentActivity.minutes) * 60) + parseInt(currentActivity.seconds);
+  formatTimer(time);
+}
+
+function formatTimer(time) {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    seconds = `0${seconds}`;
+  }
+  timer.innerHTML = `${minutes}:${seconds}`;
 }

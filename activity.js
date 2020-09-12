@@ -8,7 +8,7 @@ class Activity {
     this.completed = false;
   }
 
-  countdown() {
+  countdown(minutes, seconds) {
 
   }
 
