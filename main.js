@@ -1,19 +1,16 @@
 var currentActivity;
 var pastActivities = [];
-var formDisplay = document.querySelector('.form-display');
-var timerDisplay = document.querySelector('.timer-display');
 var startActivityButton = document.querySelector('.start-activity-button');
 var startTimerButton = document.querySelector('.start-button');
 var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
-var userTimeSection = document.querySelector('.user-time');
-var selectButtons = document.querySelector('.category-buttons');
-var userDescriptionTimer = document.querySelector('.user-description-timer');
 var timer = document.querySelector('.timer');
 
-userTimeSection.addEventListener('keyup', checkNumber);
-startTimerButton.addEventListener('click', startTimer);
+document.querySelector('.user-time').addEventListener('keyup', checkNumber);
+startTimerButton.addEventListener('click', function() {
+  currentActivity.startTimer();
+});
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
@@ -24,7 +21,7 @@ function startActivity() {
 }
 
 function formTimerInput() {
-  userDescriptionTimer.innerText = currentActivity.description;
+  document.querySelector('.user-description-timer').innerText = currentActivity.description;
   var minutes = currentActivity.minutes;
   var seconds = currentActivity.seconds;
   minutes = minutes < 10 ? "0" + minutes : minutes;
@@ -37,7 +34,7 @@ function checkNumber() {
   var seconds = parseInt(secondInput.value);
   if (Number.isInteger(minutes) && Number.isInteger(seconds)) {
     startActivityButton.removeAttribute('disabled');
-  }
+  } else startActivityButton.setAttribute('disabled', true);
 }
 
 function highlightIcon(button) {
@@ -73,32 +70,6 @@ function createActivity(category) {
 }
 
 function toggleDisplay() {
-  formDisplay.classList.toggle('hidden');
-  timerDisplay.classList.toggle('hidden');
-}
-
-function startTimer() {
-  var timeLeft;
-  var startTime = (parseInt(currentActivity.minutes) * 60) + parseInt(currentActivity.seconds);
-  var interval = setInterval(function() {
-    if (timeLeft === 0) {
-      clearInterval(interval);
-      return alert('Time\'s Up!');
-    }
-    currentActivity.timePassed += 1;
-    timeLeft = (startTime - currentActivity.timePassed);
-    formatTimer(timeLeft);
-  }, 1000);
-}
-
-function formatTimer(time) {
-  var minutes = Math.floor(time / 60);
-  var seconds = time % 60;
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  timer.innerHTML = `${minutes}:${seconds}`;
+  document.querySelector('.form-display').classList.toggle('hidden');
+  document.querySelector('.timer-display').classList.toggle('hidden');
 }
