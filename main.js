@@ -1,18 +1,12 @@
 var currentActivity;
 var pastActivities = [];
-var formDisplay = document.querySelector('.form-display');
-var timerDisplay = document.querySelector('.timer-display');
 var startActivityButton = document.querySelector('.start-activity-button');
 var startTimerButton = document.querySelector('.start-button');
 var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
-var userTimeSection = document.querySelector('.user-time');
-var selectButtons = document.querySelector('.category-buttons');
-var userDescriptionTimer = document.querySelector('.user-description-timer');
-var timer = document.querySelector('.timer');
 
-userTimeSection.addEventListener('keyup', checkNumber);
+document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
   currentActivity.startTimer();
 });
@@ -26,12 +20,12 @@ function startActivity() {
 }
 
 function formTimerInput() {
-  userDescriptionTimer.innerText = currentActivity.description;
+  document.querySelector('.user-description-timer').innerText = currentActivity.description;
   var minutes = currentActivity.minutes;
   var seconds = currentActivity.seconds;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   seconds = seconds < 10 ? "0" + seconds : seconds;
-  timer.innerText = minutes + ":" + seconds;
+  document.querySelector('.timer').innerText = minutes + ":" + seconds;
 }
 
 function checkNumber() {
@@ -77,6 +71,6 @@ function createActivity(category) {
 }
 
 function toggleDisplay() {
-  formDisplay.classList.toggle('hidden');
-  timerDisplay.classList.toggle('hidden');
+  document.querySelector('.form-display').classList.toggle('hidden');
+  document.querySelector('.timer-display').classList.toggle('hidden');
 }
