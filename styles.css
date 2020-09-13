@@ -27,6 +27,11 @@ h2 {
   margin-left: 30px;
 }
 
+.blank-log {
+  text-align: center;
+  margin: 30px;
+}
+
 .hidden {
   display: none !important;
 }

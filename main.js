@@ -6,6 +6,9 @@ var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
 var timer = document.querySelector('.timer');
+var activityTitle = document.getElementById('activity-title');
+var formDisplay = document.querySelector('.form-display');
+var timerDisplay = document.querySelector('.timer-display');
 
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
@@ -14,19 +17,19 @@ startTimerButton.addEventListener('click', function() {
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
-  errorHandling();
+  if (errorHandling() === true) return;
   startTimerButton.classList.add(`${checkedButton}-ring`);
   createActivity(checkedButton);
-  formTimerInput();
+  formatTimer(currentActivity.startTime);
+  showTimer();
 }
 
-function formTimerInput() {
-  document.querySelector('.user-description-timer').innerText = currentActivity.description;
-  var minutes = currentActivity.minutes;
-  var seconds = currentActivity.seconds;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  timer.innerText = minutes + ":" + seconds;
+function formatTimer(time) {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  if (minutes < 10) minutes = `0${minutes}`;
+  if (seconds < 10) seconds = `0${seconds}`;
+  timer.innerHTML = `${minutes}:${seconds}`;
 }
 
 function checkNumber() {
@@ -51,10 +54,9 @@ function clearHighlight() {
 
 function errorHandling() {
   if (descriptionInput.value === '') {
-    document.querySelector('.error-message').classList.toggle('hidden');
+    document.querySelector('.error-message').classList.remove('hidden');
     descriptionInput.classList.add('input-error');
-  } else {
-    toggleDisplay();
+    return true;
   }
 }
 
@@ -69,7 +71,8 @@ function createActivity(category) {
   // Need to move later to timer complete function
 }
 
-function toggleDisplay() {
-  document.querySelector('.form-display').classList.toggle('hidden');
-  document.querySelector('.timer-display').classList.toggle('hidden');
+function showTimer() {
+  formDisplay.classList.add('hidden');
+  timerDisplay.classList.remove('hidden');
+  document.querySelector('.user-description-timer').innerText = currentActivity.description;
 }
