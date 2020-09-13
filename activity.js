@@ -15,7 +15,7 @@ class Activity {
     var interval = setInterval(function() {
       if (timeLeft === 0) {
         clearInterval(interval);
-        return alert('Time\'s Up!');
+        return completeActivity();
       }
       currentActivity.timePassed += 1;
       timeLeft = (currentActivity.startTime - currentActivity.timePassed);

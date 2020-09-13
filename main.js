@@ -71,8 +71,14 @@ function createActivity(category) {
   // Need to move later to timer complete function
 }
 
+function completeActivity() {
+  startTimerButton.innerText = 'COMPLETE!';
+  startTimerButton.setAttribute('disabled', true);
+}
+
 function showTimer() {
   formDisplay.classList.add('hidden');
   timerDisplay.classList.remove('hidden');
   document.querySelector('.user-description-timer').innerText = currentActivity.description;
+  activityTitle.innerText = 'Current Activity';
 }
