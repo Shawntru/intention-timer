@@ -13,7 +13,9 @@ var userDescriptionTimer = document.querySelector('.user-description-timer');
 var timer = document.querySelector('.timer');
 
 userTimeSection.addEventListener('keyup', checkNumber);
-startTimerButton.addEventListener('click', startTimer);
+startTimerButton.addEventListener('click', function() {
+  currentActivity.startTimer();
+});
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
@@ -75,30 +77,4 @@ function createActivity(category) {
 function toggleDisplay() {
   formDisplay.classList.toggle('hidden');
   timerDisplay.classList.toggle('hidden');
-}
-
-function startTimer() {
-  var timeLeft;
-  var startTime = (parseInt(currentActivity.minutes) * 60) + parseInt(currentActivity.seconds);
-  var interval = setInterval(function() {
-    if (timeLeft === 0) {
-      clearInterval(interval);
-      return alert('Time\'s Up!');
-    }
-    currentActivity.timePassed += 1;
-    timeLeft = (startTime - currentActivity.timePassed);
-    formatTimer(timeLeft);
-  }, 1000);
-}
-
-function formatTimer(time) {
-  var minutes = Math.floor(time / 60);
-  var seconds = time % 60;
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  timer.innerHTML = `${minutes}:${seconds}`;
 }
