@@ -183,9 +183,14 @@ h2 {
   border-color: #FD8078;
 }
 
-.log-activity-button {
+.log-activity-button, .create-new-activity-button {
   color: #2B2733;
   border-radius: 5px;
   padding: 5px 15px;
   margin: 15px;
+}
+
+.activity-card {
+  background: #46424D;
+  
 }

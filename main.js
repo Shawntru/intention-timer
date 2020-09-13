@@ -11,6 +11,8 @@ var formDisplay = document.querySelector('.form-display');
 var timerDisplay = document.querySelector('.timer-display');
 var logActivityButton = document.querySelector('.log-activity-button');
 var createNewActivityButton = document.querySelector('.create-new-activity-button');
+var activitiesLog = document.querySelector('.activities-log');
+var blankLog = document.querySelector('.blank-log');
 
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
@@ -92,6 +94,15 @@ function showTimer() {
 function logActivity() {
   logActivityButton.classList.add('hidden');
   createNewActivityButton.classList.remove('hidden');
+  blankLog.classList.add('hidden');
+  var activityCard = `
+  <div class="activity-card">
+    <p>${currentActivity.category}</p>
+    <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
+    <p>${currentActivity.description}</p>
+  </div>
+  `
+  activitiesLog.insertAdjacentHTML('afterbegin', activityCard);
 }
 
 function showForm() {
@@ -106,4 +117,7 @@ function clearForm() {
   minuteInput.value = '';
   secondInput.value = '';
   clearHighlight();
+  startTimerButton.innerText = 'START';
+  startTimerButton.removeAttribute('disabled');
+  createNewActivityButton.classList.add('hidden');
 }
