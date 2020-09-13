@@ -39,6 +39,8 @@ function checkNumber() {
   var seconds = parseInt(secondInput.value);
   if (Number.isInteger(minutes) && Number.isInteger(seconds)) {
     startActivityButton.removeAttribute('disabled');
+  } else {
+    startActivityButton.setAttribute('disabled', true);
   }
 }
 
