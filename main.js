@@ -9,11 +9,15 @@ var timer = document.querySelector('.timer');
 var activityTitle = document.getElementById('activity-title');
 var formDisplay = document.querySelector('.form-display');
 var timerDisplay = document.querySelector('.timer-display');
+var logActivityButton = document.querySelector('.log-activity-button');
+var createNewActivityButton = document.querySelector('.create-new-activity-button');
 
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
   currentActivity.startTimer();
 });
+logActivityButton.addEventListener('click', logActivity);
+createNewActivityButton.addEventListener('click', showForm);
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
@@ -22,6 +26,7 @@ function startActivity() {
   createActivity(checkedButton);
   formatTimer(currentActivity.startTime);
   showTimer();
+  document.getElementById(`${checkedButton}-button`).checked = false;
 }
 
 function formatTimer(time) {
@@ -74,6 +79,7 @@ function createActivity(category) {
 function completeActivity() {
   startTimerButton.innerText = 'COMPLETE!';
   startTimerButton.setAttribute('disabled', true);
+  logActivityButton.classList.remove('hidden');
 }
 
 function showTimer() {
@@ -81,4 +87,23 @@ function showTimer() {
   timerDisplay.classList.remove('hidden');
   document.querySelector('.user-description-timer').innerText = currentActivity.description;
   activityTitle.innerText = 'Current Activity';
+}
+
+function logActivity() {
+  logActivityButton.classList.add('hidden');
+  createNewActivityButton.classList.remove('hidden');
+}
+
+function showForm() {
+  clearForm();
+  formDisplay.classList.remove('hidden');
+  timerDisplay.classList.add('hidden');
+  activityTitle.innerText = 'New Activity';
+}
+
+function clearForm() {
+  descriptionInput.value = '';
+  minuteInput.value = '';
+  secondInput.value = '';
+  clearHighlight();
 }
