@@ -6,27 +6,39 @@ var descriptionInput = document.querySelector('.description-input');
 var minuteInput = document.querySelector('.minutes');
 var secondInput = document.querySelector('.seconds');
 var timer = document.querySelector('.timer');
+var activityTitle = document.getElementById('activity-title');
+var formDisplay = document.querySelector('.form-display');
+var timerDisplay = document.querySelector('.timer-display');
+var logActivityButton = document.querySelector('.log-activity-button');
+var createNewActivityButton = document.querySelector('.create-new-activity-button');
+var activitiesLog = document.querySelector('.activities-log');
+var blankLog = document.querySelector('.blank-log');
+var timerView = document.querySelector('.timer-view');
 
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
   currentActivity.startTimer();
 });
+logActivityButton.addEventListener('click', logActivity);
+createNewActivityButton.addEventListener('click', showForm);
 
 function startActivity() {
   var checkedButton = document.querySelector('input[name="selectors"]:checked').value;
-  errorHandling();
+  if (errorHandling() === true) return;
   startTimerButton.classList.add(`${checkedButton}-ring`);
   createActivity(checkedButton);
-  formTimerInput();
+  formatTimer(currentActivity.startTime);
+  showTimer();
+  document.getElementById(`${checkedButton}-button`).checked = false;
+  toggleHidden(timerView);
 }
 
-function formTimerInput() {
-  document.querySelector('.user-description-timer').innerText = currentActivity.description;
-  var minutes = currentActivity.minutes;
-  var seconds = currentActivity.seconds;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  seconds = seconds < 10 ? "0" + seconds : seconds;
-  timer.innerText = minutes + ":" + seconds;
+function formatTimer(time) {
+  var minutes = Math.floor(time / 60);
+  var seconds = time % 60;
+  if (minutes < 10) minutes = `0${minutes}`;
+  if (seconds < 10) seconds = `0${seconds}`;
+  timer.innerHTML = `${minutes}:${seconds}`;
 }
 
 function checkNumber() {
@@ -51,10 +63,9 @@ function clearHighlight() {
 
 function errorHandling() {
   if (descriptionInput.value === '') {
-    document.querySelector('.error-message').classList.toggle('hidden');
+    toggleHidden(document.querySelector('.error-message'));
     descriptionInput.classList.add('input-error');
-  } else {
-    toggleDisplay();
+    return true;
   }
 }
 
@@ -69,7 +80,55 @@ function createActivity(category) {
   // Need to move later to timer complete function
 }
 
-function toggleDisplay() {
-  document.querySelector('.form-display').classList.toggle('hidden');
-  document.querySelector('.timer-display').classList.toggle('hidden');
+function completeActivity() {
+  startTimerButton.innerText = 'COMPLETE!';
+  startTimerButton.setAttribute('disabled', true);
+  toggleHidden(logActivityButton);
+}
+
+function showTimer() {
+  toggleHidden(formDisplay, timerDisplay);
+  document.querySelector('.user-description-timer').innerText = currentActivity.description;
+  activityTitle.innerText = 'Current Activity';
+}
+
+function logActivity() {
+  activityTitle.innerText = 'Completed Activity';
+  toggleHidden(timerView, logActivityButton, createNewActivityButton);
+  blankLog.classList.add('hidden');
+  var categoryCapital = currentActivity.category.charAt(0).toUpperCase() + currentActivity.category.slice(1);
+  var activityCard = `
+  <div class="activity-card">
+    <div class="${currentActivity.category}-ring activity-line"></div>
+    <div>
+      <p id="category-title">${categoryCapital}</p>
+      <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
+      <p>${currentActivity.description}</p>
+    </div>
+  </div>
+  `;
+  activitiesLog.insertAdjacentHTML('afterbegin', activityCard);
+}
+
+function showForm() {
+  clearForm();
+  toggleHidden(formDisplay, timerDisplay);
+  activityTitle.innerText = 'New Activity';
+  startActivityButton.setAttribute('disabled', true);
+}
+
+function clearForm() {
+  descriptionInput.value = '';
+  minuteInput.value = '';
+  secondInput.value = '';
+  clearHighlight();
+  startTimerButton.innerText = 'START';
+  startTimerButton.removeAttribute('disabled');
+  toggleHidden(createNewActivityButton);
+}
+
+function toggleHidden() {
+  for (var i = 0; i < arguments.length; i++) {
+    arguments[i].classList.toggle('hidden');
+  }
 }

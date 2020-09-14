@@ -21,10 +21,26 @@ body {
 h1 {
   margin: 10px;
   font-size: 35px;
+  font-weight: 400;
 }
 
 h2 {
   margin-left: 30px;
+  font-weight: 400;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+p {
+  margin: 5px;
+  font-weight: 300;
+}
+
+.blank-log {
+  text-align: center;
+  margin: 30px;
 }
 
 .hidden {
@@ -35,6 +51,7 @@ h2 {
   background-color: #46424D;
   text-align: center;
   padding: 15px 0px;
+  box-shadow: 3px 3px 10px black;
 }
 
 .error-message {
@@ -54,6 +71,8 @@ h2 {
   background-color: #46424D;
   margin: 30px;
   padding: 40px;
+  box-shadow: 3px 3px 10px black;
+  border-radius: 10px;
 }
 
 .category-buttons {
@@ -116,6 +135,8 @@ h2 {
 
 .past-activity {
   border-left: 3px solid #46424D;
+  height: 1000px;
+  z-index: -1;
 }
 
 .button-label {
@@ -147,10 +168,16 @@ h2 {
   color: #FD8078;
 }
 
-.timer-display {
+.timer-display, .timer-view {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.timer {
+  font-weight: 500;
+  font-size: 65px;
+  transform: scale(1,1.1);
 }
 
 .start-button {
@@ -159,11 +186,30 @@ h2 {
   border-radius: 50%;
   border-color: white;
   border-width: 3px;
-  width: 230px;
-  height: 230px;
+  width: 150px;
+  height: 150px;
   border-style: solid;
   outline: none;
   font-size: 22px;
+  margin: 35px;
+}
+
+.activity-card {
+  background: #46424D;
+  padding: 10px 20px;
+  margin: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  box-shadow: 3px 3px 10px black;
+  border-radius: 10px;
+}
+
+.activity-line {
+  height: 30px;
+  border-right: 6px solid;
+  border-radius: 20%;
 }
 
 .study-ring {
@@ -176,4 +222,16 @@ h2 {
 
 .exercise-ring {
   border-color: #FD8078;
+}
+
+.log-activity-button, .create-new-activity-button {
+  color: #2B2733;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 15px;
+  outline: none;
+}
+
+#category-title {
+  font-weight: 700;
 }
