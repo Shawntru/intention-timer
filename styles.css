@@ -136,6 +136,7 @@ p {
 .past-activity {
   border-left: 3px solid #46424D;
   height: 1000px;
+  z-index: -1;
 }
 
 .button-label {
