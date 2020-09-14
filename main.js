@@ -30,7 +30,7 @@ function startActivity() {
   formatTimer(currentActivity.startTime);
   showTimer();
   document.getElementById(`${checkedButton}-button`).checked = false;
-  timerView.classList.remove('hidden');
+  toggleHidden(timerView);
 }
 
 function formatTimer(time) {
@@ -63,7 +63,7 @@ function clearHighlight() {
 
 function errorHandling() {
   if (descriptionInput.value === '') {
-    document.querySelector('.error-message').classList.remove('hidden');
+    toggleHidden(document.querySelector('.error-message'));
     descriptionInput.classList.add('input-error');
     return true;
   }
@@ -83,21 +83,18 @@ function createActivity(category) {
 function completeActivity() {
   startTimerButton.innerText = 'COMPLETE!';
   startTimerButton.setAttribute('disabled', true);
-  logActivityButton.classList.remove('hidden');
+  toggleHidden(logActivityButton);
 }
 
 function showTimer() {
-  formDisplay.classList.add('hidden');
-  timerDisplay.classList.remove('hidden');
+  toggleHidden(formDisplay, timerDisplay);
   document.querySelector('.user-description-timer').innerText = currentActivity.description;
   activityTitle.innerText = 'Current Activity';
 }
 
 function logActivity() {
   activityTitle.innerText = 'Completed Activity';
-  timerView.classList.add('hidden');
-  logActivityButton.classList.add('hidden');
-  createNewActivityButton.classList.remove('hidden');
+  toggleHidden(timerView, logActivityButton, createNewActivityButton);
   blankLog.classList.add('hidden');
   var categoryCapital = currentActivity.category.charAt(0).toUpperCase() + currentActivity.category.slice(1);
   var activityCard = `
@@ -109,14 +106,13 @@ function logActivity() {
       <p>${currentActivity.description}</p>
     </div>
   </div>
-  `
+  `;
   activitiesLog.insertAdjacentHTML('afterbegin', activityCard);
 }
 
 function showForm() {
   clearForm();
-  formDisplay.classList.remove('hidden');
-  timerDisplay.classList.add('hidden');
+  toggleHidden(formDisplay, timerDisplay);
   activityTitle.innerText = 'New Activity';
   startActivityButton.setAttribute('disabled', true);
 }
@@ -128,5 +124,11 @@ function clearForm() {
   clearHighlight();
   startTimerButton.innerText = 'START';
   startTimerButton.removeAttribute('disabled');
-  createNewActivityButton.classList.add('hidden');
+  toggleHidden(createNewActivityButton);
+}
+
+function toggleHidden() {
+  for (var i = 0; i < arguments.length; i++) {
+    arguments[i].classList.toggle('hidden');
+  }
 }
