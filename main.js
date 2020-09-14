@@ -97,9 +97,12 @@ function logActivity() {
   blankLog.classList.add('hidden');
   var activityCard = `
   <div class="activity-card">
-    <p>${currentActivity.category}</p>
-    <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-    <p>${currentActivity.description}</p>
+    <div class="${currentActivity.category}-ring activity-line"></div>
+    <div>
+      <p id="category-title">${currentActivity.category}</p>
+      <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
+      <p>${currentActivity.description}</p>
+    </div>
   </div>
   `
   activitiesLog.insertAdjacentHTML('afterbegin', activityCard);
