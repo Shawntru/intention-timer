@@ -51,6 +51,7 @@ p {
   background-color: #46424D;
   text-align: center;
   padding: 15px 0px;
+  box-shadow: 3px 3px 10px black;
 }
 
 .error-message {
@@ -70,6 +71,8 @@ p {
   background-color: #46424D;
   margin: 30px;
   padding: 40px;
+  box-shadow: 3px 3px 10px black;
+  border-radius: 10px;
 }
 
 .category-buttons {
@@ -132,6 +135,7 @@ p {
 
 .past-activity {
   border-left: 3px solid #46424D;
+  height: 1000px;
 }
 
 .button-label {
@@ -163,10 +167,16 @@ p {
   color: #FD8078;
 }
 
-.timer-display {
+.timer-display, .timer-view {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.timer {
+  font-weight: 500;
+  font-size: 65px;
+  transform: scale(1,1.1);
 }
 
 .start-button {
@@ -175,11 +185,12 @@ p {
   border-radius: 50%;
   border-color: white;
   border-width: 3px;
-  width: 230px;
-  height: 230px;
+  width: 150px;
+  height: 150px;
   border-style: solid;
   outline: none;
   font-size: 22px;
+  margin: 35px;
 }
 
 .activity-card {
@@ -190,6 +201,8 @@ p {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
+  box-shadow: 3px 3px 10px black;
+  border-radius: 10px;
 }
 
 .activity-line {
@@ -215,6 +228,7 @@ p {
   border-radius: 5px;
   padding: 5px 15px;
   margin: 15px;
+  outline: none;
 }
 
 #category-title {

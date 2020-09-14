@@ -13,6 +13,7 @@ var logActivityButton = document.querySelector('.log-activity-button');
 var createNewActivityButton = document.querySelector('.create-new-activity-button');
 var activitiesLog = document.querySelector('.activities-log');
 var blankLog = document.querySelector('.blank-log');
+var timerView = document.querySelector('.timer-view');
 
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
@@ -29,6 +30,7 @@ function startActivity() {
   formatTimer(currentActivity.startTime);
   showTimer();
   document.getElementById(`${checkedButton}-button`).checked = false;
+  timerView.classList.remove('hidden');
 }
 
 function formatTimer(time) {
@@ -92,14 +94,17 @@ function showTimer() {
 }
 
 function logActivity() {
+  activityTitle.innerText = 'Completed Activity';
+  timerView.classList.add('hidden');
   logActivityButton.classList.add('hidden');
   createNewActivityButton.classList.remove('hidden');
   blankLog.classList.add('hidden');
+  var categoryCapital = currentActivity.category.charAt(0).toUpperCase() + currentActivity.category.slice(1);
   var activityCard = `
   <div class="activity-card">
     <div class="${currentActivity.category}-ring activity-line"></div>
     <div>
-      <p id="category-title">${currentActivity.category}</p>
+      <p id="category-title">${categoryCapital}</p>
       <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
       <p>${currentActivity.description}</p>
     </div>
@@ -113,6 +118,7 @@ function showForm() {
   formDisplay.classList.remove('hidden');
   timerDisplay.classList.add('hidden');
   activityTitle.innerText = 'New Activity';
+  startActivityButton.setAttribute('disabled', true);
 }
 
 function clearForm() {
