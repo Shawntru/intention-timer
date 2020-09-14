@@ -76,13 +76,11 @@ function createActivity(category) {
     minuteInput.value,
     secondInput.value
   );
-  pastActivities.push(currentActivity);
-  // Need to move later to timer complete function
 }
 
 function completeActivity() {
+  currentActivity.markComplete();
   startTimerButton.innerText = 'COMPLETE!';
-  startTimerButton.setAttribute('disabled', true);
   toggleHidden(logActivityButton);
 }
 
@@ -96,6 +94,12 @@ function logActivity() {
   activityTitle.innerText = 'Completed Activity';
   toggleHidden(timerView, logActivityButton, createNewActivityButton);
   blankLog.classList.add('hidden');
+  createCard();
+  pastActivities.push(currentActivity);
+  currentActivity.saveToStorage();
+}
+
+function createCard() {
   var categoryCapital = currentActivity.category.charAt(0).toUpperCase() + currentActivity.category.slice(1);
   var activityCard = `
   <div class="activity-card">
@@ -114,7 +118,6 @@ function showForm() {
   clearForm();
   toggleHidden(formDisplay, timerDisplay);
   activityTitle.innerText = 'New Activity';
-  startActivityButton.setAttribute('disabled', true);
 }
 
 function clearForm() {
