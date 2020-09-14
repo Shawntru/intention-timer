@@ -11,9 +11,10 @@ var formDisplay = document.querySelector('.form-display');
 var timerDisplay = document.querySelector('.timer-display');
 var logActivityButton = document.querySelector('.log-activity-button');
 var createNewActivityButton = document.querySelector('.create-new-activity-button');
-var activitiesLog = document.querySelector('.activities-log');
+var activityCards = document.querySelector('.activity-cards');
 var blankLog = document.querySelector('.blank-log');
 var timerView = document.querySelector('.timer-view');
+var pastClearBtn = document.getElementById('past-activity-btn');
 
 window.onload = displayStorage;
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
@@ -70,6 +71,12 @@ function errorHandling() {
   }
 }
 
+function clearPast() {
+  activityCards.innerHTML = '';
+  toggleHidden(blankLog, pastClearBtn);
+  localStorage.clear();
+}
+
 function createActivity(category) {
   currentActivity = new Activity(
     category,
@@ -95,6 +102,7 @@ function logActivity() {
   activityTitle.innerText = 'Completed Activity';
   toggleHidden(timerView, logActivityButton, createNewActivityButton);
   blankLog.classList.add('hidden');
+  pastClearBtn.classList.remove('hidden');
   createCard(currentActivity);
   pastActivities.push(currentActivity);
   currentActivity.saveToStorage();
@@ -112,12 +120,12 @@ function createCard(activity) {
     </div>
   </div>
   `;
-  activitiesLog.insertAdjacentHTML('afterbegin', activityCard);
+  activityCards.insertAdjacentHTML('afterbegin', activityCard);
 }
 
 function displayStorage() {
   if (localStorage.length > 0) {
-    blankLog.classList.add('hidden');
+    toggleHidden(blankLog, pastClearBtn);
   }
   for (var i = 0; i < localStorage.length; i++) {
     var retrievedActivity = localStorage.getItem(localStorage.key(i));
