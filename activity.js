@@ -11,6 +11,7 @@ class Activity {
   }
 
   startTimer() {
+    startTimerButton.setAttribute('disabled', true);
     var timeLeft;
     var interval = setInterval(function() {
       if (timeLeft === 0) {
@@ -24,10 +25,11 @@ class Activity {
   }
 
   markComplete() {
-
+    this.completed = true;
   }
 
   saveToStorage() {
-
+    var stringifiedActivity = JSON.stringify(this);
+    localStorage.setItem(this.id, stringifiedActivity);
   }
 }
