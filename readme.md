@@ -1,5 +1,6 @@
 # Intention Timer
 
+
 ## Project Description
 This application allows a user to set goals for their health and productivity, tied to an amount of time. Users will select an activity category, set the amount of time they want to spend on that activity, and start the timer. The app will log that activity to keep track of how the user has been spending their time. See project rubric [here](https://frontend.turing.io/projects/module-1/intention-timer-group.html).
 

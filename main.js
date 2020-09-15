@@ -11,10 +11,12 @@ var formDisplay = document.querySelector('.form-display');
 var timerDisplay = document.querySelector('.timer-display');
 var logActivityButton = document.querySelector('.log-activity-button');
 var createNewActivityButton = document.querySelector('.create-new-activity-button');
-var activitiesLog = document.querySelector('.activities-log');
+var activityCards = document.querySelector('.activity-cards');
 var blankLog = document.querySelector('.blank-log');
 var timerView = document.querySelector('.timer-view');
+var pastClearBtn = document.getElementById('past-activity-btn');
 
+window.onload = displayStorage;
 document.querySelector('.user-time').addEventListener('keyup', checkNumber);
 startTimerButton.addEventListener('click', function() {
   currentActivity.startTimer();
@@ -69,6 +71,12 @@ function errorHandling() {
   }
 }
 
+function clearPast() {
+  activityCards.innerHTML = '';
+  toggleHidden(blankLog, pastClearBtn);
+  localStorage.clear();
+}
+
 function createActivity(category) {
   currentActivity = new Activity(
     category,
@@ -76,13 +84,11 @@ function createActivity(category) {
     minuteInput.value,
     secondInput.value
   );
-  pastActivities.push(currentActivity);
-  // Need to move later to timer complete function
 }
 
 function completeActivity() {
+  currentActivity.markComplete();
   startTimerButton.innerText = 'COMPLETE!';
-  startTimerButton.setAttribute('disabled', true);
   toggleHidden(logActivityButton);
 }
 
@@ -96,25 +102,42 @@ function logActivity() {
   activityTitle.innerText = 'Completed Activity';
   toggleHidden(timerView, logActivityButton, createNewActivityButton);
   blankLog.classList.add('hidden');
-  var categoryCapital = currentActivity.category.charAt(0).toUpperCase() + currentActivity.category.slice(1);
+  pastClearBtn.classList.remove('hidden');
+  createCard(currentActivity);
+  pastActivities.push(currentActivity);
+  currentActivity.saveToStorage();
+}
+
+function createCard(activity) {
+  var categoryCapital = activity.category.charAt(0).toUpperCase() + activity.category.slice(1);
   var activityCard = `
   <div class="activity-card">
-    <div class="${currentActivity.category}-ring activity-line"></div>
+    <div class="${activity.category}-ring activity-line"></div>
     <div>
       <p id="category-title">${categoryCapital}</p>
-      <p>${currentActivity.minutes} MIN ${currentActivity.seconds} SECONDS</p>
-      <p>${currentActivity.description}</p>
+      <p>${activity.minutes} MIN ${activity.seconds} SECONDS</p>
+      <p>${activity.description}</p>
     </div>
   </div>
   `;
-  activitiesLog.insertAdjacentHTML('afterbegin', activityCard);
+  activityCards.insertAdjacentHTML('afterbegin', activityCard);
+}
+
+function displayStorage() {
+  if (localStorage.length > 0) {
+    toggleHidden(blankLog, pastClearBtn);
+  }
+  for (var i = 0; i < localStorage.length; i++) {
+    var retrievedActivity = localStorage.getItem(localStorage.key(i));
+    var parsedActivity = JSON.parse(retrievedActivity);
+    createCard(parsedActivity);
+  }
 }
 
 function showForm() {
   clearForm();
   toggleHidden(formDisplay, timerDisplay);
   activityTitle.innerText = 'New Activity';
-  startActivityButton.setAttribute('disabled', true);
 }
 
 function clearForm() {
